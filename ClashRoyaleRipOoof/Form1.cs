@@ -12,9 +12,52 @@ namespace ClashRoyaleRipOoof
 {
     public partial class Form1 : Form
     {
+        int[,] map = new int[45,15];
+        List<Troop> p1_Troops = new List<Troop>();
+        List<Troop> p2_Troops = new List<Troop>();
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void Form1_Paint(object sender, PaintEventArgs e)
+        {
+            Graphics g = e.Graphics;
+
+            SolidBrush brushi = new SolidBrush(Color.Green);
+
+            g.FillRectangle(brushi, 100.5f, 100, 100, 0.1f) ;
+
+
+        }
+
+        private void PlaceNewTroop()
+        {
+
+        }
+
+        private void TimerTick_Tick(object sender, EventArgs e)
+        {
+            FindNewTarget();
+            AttackingTroop();
+        }
+
+        private void FindNewTarget()
+        {
+            for(int i = 0; i < p1_Troops.Count; i++)
+            {
+                
+                p1_Troops[i].Find_Target(p2_Troops);
+            }
+        }
+
+        private void AttackingTroop()
+        {
+            List<Troop> troops_in_attack_range = new List<Troop>();
+        }
+        private void MovingTroop()
+        {
+
         }
     }
 }
