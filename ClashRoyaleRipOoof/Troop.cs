@@ -27,10 +27,10 @@ namespace ClashRoyaleRipOoof
         public float Y
         { get { return YPos; } }
 
-        public bool HaveTarget()
+        public bool HaveTarget
         {
-            if (target != null) return true;
-            else return false;
+            get { return hasTarget; }
+            set { hasTarget = value; }
         }
 
         public void Find_Target(List<Troop> enemyTroops)
@@ -38,6 +38,7 @@ namespace ClashRoyaleRipOoof
             if (enemyTroops.Count > 0)
             {
                 target = enemyTroops[0];
+                hasTarget = true;
                 float smalest_distance = (float)Math.Sqrt(Math.Pow(enemyTroops[0].X, 2) + Math.Pow(enemyTroops[0].Y, 2));
 
                 foreach (Troop i in enemyTroops.Skip(1))

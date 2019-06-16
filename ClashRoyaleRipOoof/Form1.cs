@@ -46,8 +46,14 @@ namespace ClashRoyaleRipOoof
         {
             for(int i = 0; i < p1_Troops.Count; i++)
             {
-                
-                p1_Troops[i].Find_Target(p2_Troops);
+                if(!p1_Troops[i].HaveTarget)
+                    p1_Troops[i].Find_Target(p2_Troops);
+            }
+
+            for (int i = 0; i < p2_Troops.Count; i++)
+            {
+                if (!p2_Troops[i].HaveTarget)
+                    p2_Troops[i].Find_Target(p1_Troops);
             }
         }
 
