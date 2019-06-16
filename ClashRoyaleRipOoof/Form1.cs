@@ -38,11 +38,26 @@ namespace ClashRoyaleRipOoof
 
         private void TimerTick_Tick(object sender, EventArgs e)
         {
-            FindNewTarget();
-            AttackingTroop();
+            AttackingTroops();
+            RemoveKilledTroops();
+            FindNewTargets();
+            MovingTroops();
         }
 
-        private void FindNewTarget()
+        private void AttackingTroops()
+        {
+            for (int i = 0; i < p1_Troops.Count; i++)
+            {
+                p1_Troops[i].Attack();
+            }
+
+            for (int i = 0; i < p2_Troops.Count; i++)
+            {
+                p2_Troops[i].Attack();
+            }
+        }
+
+        private void FindNewTargets()
         {
             for(int i = 0; i < p1_Troops.Count; i++)
             {
@@ -57,11 +72,26 @@ namespace ClashRoyaleRipOoof
             }
         }
 
-        private void AttackingTroop()
+        private void RemoveKilledTroops()
         {
-            List<Troop> troops_in_attack_range = new List<Troop>();
+            for (int i = 0; i < p1_Troops.Count; i++)
+            {
+                if(p1_Troops[0].Health <= 0)
+                {
+                    p1_Troops.RemoveAt(i);
+                }
+            }
+
+            for (int i = 0; i < p2_Troops.Count; i++)
+            {
+                if (p2_Troops[0].Health <= 0)
+                {
+                    p2_Troops.RemoveAt(i);
+                }
+            }
         }
-        private void MovingTroop()
+
+        private void MovingTroops()
         {
 
         }
